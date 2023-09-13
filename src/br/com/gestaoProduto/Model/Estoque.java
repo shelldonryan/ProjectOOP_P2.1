@@ -4,4 +4,7 @@ public class Estoque {
 
     public Estoque[] estoque = new Estoque[100];
 
+    public void verificarDisponibilidade(){
+
+    }
 }
