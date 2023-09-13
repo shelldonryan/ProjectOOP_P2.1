@@ -17,6 +17,9 @@ public class Estoque {
                         System.out.printf("O produto %s nao esta disponivel", produto.nome);
                     }
                 }
+                else {
+                    System.out.println("Produto não encontrado no estoque.");
+                }
             }
         }
     }
