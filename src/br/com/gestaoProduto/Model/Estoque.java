@@ -1,10 +1,13 @@
 package br.com.gestaoProduto.Model;
 
+import java.util.UUID;
+
 public class Estoque {
 
-    public Estoque[] estoque = new Estoque[100];
+    public Produto[] produtoNoEstoque = new Produto[100];
 
-    public void verificarDisponibilidade(){
+    public void adicionarProduto(Produto produto){
 
     }
+
 }
