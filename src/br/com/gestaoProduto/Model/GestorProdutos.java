@@ -12,15 +12,15 @@ public class GestorProdutos {
     }
     public void buscarProdPorNome(String nome) {
         for (int i = 0; i < this.qntFornecedores; i++) {
-            if (fornecedores[i].produtos[i].nome.equals(nome)) {
-                fornecedores[i].produtos[i].exibirInfo();
+            if (fornecedores[i].produtosFornecedor[i].nome.equals(nome)) {
+                fornecedores[i].produtosFornecedor[i].exibirInfo();
             }
         }
     }
     public void buscarProdPorID(UUID uuid){
         for (int i = 0; i < this.qntFornecedores; i++){
-            if (fornecedores[i].produtos[i].idDoProduto.equals(uuid)){
-                fornecedores[i].produtos[i].exibirInfo();
+            if (fornecedores[i].produtosFornecedor[i].idDoProduto.equals(uuid)){
+                fornecedores[i].produtosFornecedor[i].exibirInfo();
             }
         }
     }
@@ -36,8 +36,8 @@ public class GestorProdutos {
     }
     public void exibirInfoProduto(String nome) {
         for (int i = 0; i < this.qntFornecedores; i++) {
-            if (fornecedores[i].produtos[i].nome.equals(nome)) {
-                fornecedores[i].produtos[i].exibirInfo();
+            if (fornecedores[i].produtosFornecedor[i].nome.equals(nome)) {
+                fornecedores[i].produtosFornecedor[i].exibirInfo();
             }
         }
     }
