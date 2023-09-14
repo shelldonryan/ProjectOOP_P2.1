@@ -13,14 +13,14 @@ public class Estoque {
             for (int i = 0 ; i < this.qntProdutoNoEstoque; i++){
                 if(produtosNoEstoque[i] == produto){
                     if (produto.quantidadeEmEstoque > 0 ){
-                    System.out.printf("O produto %s esta disponivel", produto.nome);
+                    System.out.printf("\nO produto %s esta disponivel", produto.nome);
                     }
                     else{
-                        System.out.printf("O produto %s nao esta disponivel", produto.nome);
+                        System.out.printf("\nO produto %s nao esta disponivel", produto.nome);
                     }
                 }
                 else {
-                    System.out.println("Produto não encontrado no estoque.");
+                    System.out.println("\nProduto não encontrado no estoque.");
                 }
             }
         }
@@ -36,9 +36,9 @@ public class Estoque {
             if(produtosNoEstoque[i].idDoProduto == idDoProduto){
                 produtosNoEstoque[i].quantidadeEmEstoque += qntEmEstoque;
                 produtosNoEstoque[i].valor = valorDoProduto;
-                System.out.println("Produto atualizado com sucesso!");
+                System.out.println("\nProduto atualizado com sucesso!");
             }else{
-                System.out.println("Produto nao encontrado");
+                System.out.println("\nProduto nao encontrado");
             }
         }
     }
@@ -49,6 +49,13 @@ public class Estoque {
                 this.produtosNoEstoque[i] = null;
                 this.qntProdutoNoEstoque--;
             }
+        }
+    }
+
+    public void gerarRelatorio(){
+        System.out.println("\nProdutos em estoque:");
+        for (int i = 0 ; i < this.qntProdutoNoEstoque ; i++){
+            produtosNoEstoque[i].exibirInfo();
         }
     }
 }

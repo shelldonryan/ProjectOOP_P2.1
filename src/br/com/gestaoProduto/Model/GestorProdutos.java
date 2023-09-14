@@ -30,7 +30,7 @@ public class GestorProdutos {
                 fornecedores[i].exibirInfo();
             }
             else {
-                System.out.println("Fornecedor não encontrado");
+                System.out.println("\nFornecedor não encontrado");
             }
         }
     }
