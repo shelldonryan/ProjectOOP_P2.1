@@ -12,6 +12,16 @@ public class Fornecedor {
         this.qntProdutosMax = qntProdutosMax;
         this.produtosFornecedor = new Produto[qntProdutosMax];
     }
+
+    public void addProdutoFornecedor(Produto produto) {
+        for(int i = 0; i < produtosFornecedor.length; i++) {
+            if(produtosFornecedor[i] == null) {
+                produtosFornecedor[i] = produto;
+                break;
+            }
+        }
+    }
+
     public void exibirInfo(){
         System.out.println("\nNome do fornecedor: " + this.nomeFornecedor);
         System.out.println("CNPJ do fornecedor" + this.cnpj);

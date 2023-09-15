@@ -13,14 +13,11 @@ public class Estoque {
             for (int i = 0 ; i < this.qntProdutoNoEstoque; i++){
                 if(produtosNoEstoque[i] == produto){
                     if (produto.quantidadeEmEstoque > 0 ){
-                    System.out.printf("\nO produto %s esta disponivel", produto.nome);
+                    System.out.printf("\nO produto %s esta disponivel\n", produto.nome);
+                    break;
+                    } else{
+                        System.out.printf("\nO produto %s nao esta disponivel\n", produto.nome);
                     }
-                    else{
-                        System.out.printf("\nO produto %s nao esta disponivel", produto.nome);
-                    }
-                }
-                else {
-                    System.out.println("\nProduto não encontrado no estoque.");
                 }
             }
         }
@@ -29,6 +26,7 @@ public class Estoque {
     public void adicionarProduto(Produto produto){
         this.produtosNoEstoque[this.qntProdutoNoEstoque] = produto;
         this.qntProdutoNoEstoque++;
+        System.out.println("Produto " + produto.nome + " Adicionado com Sucesso");
     }
 
     public void atualizarProduto(UUID idDoProduto, Double valorDoProduto, int qntEmEstoque){
@@ -37,6 +35,7 @@ public class Estoque {
                 produtosNoEstoque[i].quantidadeEmEstoque += qntEmEstoque;
                 produtosNoEstoque[i].valor = valorDoProduto;
                 System.out.println("\nProduto atualizado com sucesso!");
+                break;
             }else{
                 System.out.println("\nProduto nao encontrado");
             }
@@ -53,9 +52,11 @@ public class Estoque {
     }
 
     public void gerarRelatorio(){
-        System.out.println("\nProdutos em estoque:");
+        System.out.println("\n------------------------------");
+        System.out.println("\nRelatorio Produtos em estoque:");
         for (int i = 0 ; i < this.qntProdutoNoEstoque ; i++){
             produtosNoEstoque[i].exibirInfo();
         }
+        System.out.println("\n------------------------------");
     }
 }
