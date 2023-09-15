@@ -67,6 +67,11 @@ public static void main(String[] args) {
 
     gestorDeProdutos1.cadastrarFornecedor(fornecedor1);
     gestorDeProdutos1.cadastrarFornecedor(fornecedor2);
+
+    gestorDeProdutos1.exibirInfoFornecedor(fornecedor1.nomeFornecedor);
+    gestorDeProdutos1.exibirInfoFornecedor(fornecedor2.nomeFornecedor);
+
+    
     
     Estoque estoque1 = new Estoque();
 
@@ -79,12 +84,17 @@ public static void main(String[] args) {
     estoque1.adicionarProduto(fornecedor2.produtosFornecedor[3]);
 
     estoque1.atualizarProduto(
-        fornecedor1.produtosFornecedor[0].idDoProduto, 
+        fornecedor1.produtosFornecedor[1].idDoProduto, 
         230.89, 
         10);
 
     estoque1.gerarRelatorio();
 
     estoque1.verificarDisponibilidade(produtoHeadset);
+    estoque1.excluirProduto(produtoHeadset);
+
+    gestorDeProdutos1.exibirInfoProduto(produtoTeclado);
+    gestorDeProdutos1.buscarProdPorNome(produtoGeladeira.nome);
+    gestorDeProdutos1.buscarProdPorID(produtoTV.idDoProduto);
     }    
 }

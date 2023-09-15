@@ -26,7 +26,7 @@ public class Estoque {
     public void adicionarProduto(Produto produto){
         this.produtosNoEstoque[this.qntProdutoNoEstoque] = produto;
         this.qntProdutoNoEstoque++;
-        System.out.println("Produto " + produto.nome + " Adicionado com Sucesso");
+        System.out.println("\nProduto " + produto.nome + " Adicionado com Sucesso");
     }
 
     public void atualizarProduto(UUID idDoProduto, Double valorDoProduto, int qntEmEstoque){
@@ -47,6 +47,7 @@ public class Estoque {
             if (produtosNoEstoque[i] == produto){
                 this.produtosNoEstoque[i] = null;
                 this.qntProdutoNoEstoque--;
+                System.out.println("\nProduto excluido com  sucesso!");
             }
         }
     }

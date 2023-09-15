@@ -14,6 +14,7 @@ public class Produto {
         this.desc = descDoProduto;
         this.valor = valorDoProduto;
         this.quantidadeEmEstoque = qntEstoque;
+        this.idDoProduto = UUID.randomUUID();
     }
 
     public void exibirInfo() {
