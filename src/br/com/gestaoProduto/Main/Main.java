@@ -4,10 +4,10 @@ import br.com.gestaoProduto.Model.*;
 public class Main {
 public static void main(String[] args) {
     Produto produtoMouse = new Produto(
-        "Mouse Gamer X3000",
-        "Mouse de alta precisão para gamers.",
-        199.99,
-        150);
+        "Mouse Gamer X3100",
+        "Mouse de super precisão para gamers.",
+        199.98,
+        155);
     
     Produto produtoTeclado = new Produto(
         "Teclado Mecânico ProMax",
@@ -20,6 +20,12 @@ public static void main(String[] args) {
         "Headset com som surround e microfone retrátil.",
         249.99,
         100);
+    
+    Produto produtoWebcam = new Produto(
+        "Webcam X7z 4k Full Hd",
+        "Webcam Full HD Com Otima Imagem.",
+        399.99,
+        50);
 
     Fornecedor fornecedor1 = new Fornecedor(
         "Suprimentos Tech Ltda.", 
@@ -29,6 +35,7 @@ public static void main(String[] args) {
     fornecedor1.addProdutoFornecedor(produtoMouse);
     fornecedor1.addProdutoFornecedor(produtoTeclado);
     fornecedor1.addProdutoFornecedor(produtoHeadset);
+    fornecedor1.addProdutoFornecedor(produtoWebcam);
     
     Produto produtoTV = new Produto(
         "Smart TV UltraHD 4K",
@@ -78,6 +85,7 @@ public static void main(String[] args) {
     estoque1.adicionarProduto(fornecedor1.produtosFornecedor[0]);
     estoque1.adicionarProduto(fornecedor1.produtosFornecedor[1]);
     estoque1.adicionarProduto(fornecedor1.produtosFornecedor[2]);
+    estoque1.adicionarProduto(fornecedor1.produtosFornecedor[3]);
     estoque1.adicionarProduto(fornecedor2.produtosFornecedor[0]);
     estoque1.adicionarProduto(fornecedor2.produtosFornecedor[1]);
     estoque1.adicionarProduto(fornecedor2.produtosFornecedor[2]);
