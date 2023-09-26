@@ -30,7 +30,7 @@ public static void main(String[] args) {
     Fornecedor fornecedor1 = new Fornecedor(
         "Suprimentos Tech Ltda.", 
         "12.345.678/0001-90", 
-        3);
+        4);
     
     fornecedor1.addProdutoFornecedor(produtoMouse);
     fornecedor1.addProdutoFornecedor(produtoTeclado);
