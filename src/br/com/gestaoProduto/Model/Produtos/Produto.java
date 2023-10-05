@@ -1,8 +1,8 @@
-package br.com.gestaoProduto.Model;
+package br.com.gestaoProduto.Model.Produtos;
 
 import java.util.UUID;
 
-public class Produto {
+public abstract class Produto {
     public UUID idDoProduto;
     public String nome;
     public String desc;
@@ -18,12 +18,6 @@ public class Produto {
     }
 
     public void exibirInfo() {
-        System.out.printf("""
-                \nDetalhes do Produto:
-                Nome: %s
-                Descricao: %s
-                Valor: R$ %.2f
-                Quantidade no estoque: %d
-                """, nome, desc, valor, quantidadeEmEstoque);
+        System.out.println("Implemente com uma desc");
     }
 }

@@ -1,10 +1,17 @@
-package br.com.gestaoProduto.Model;
+package br.com.gestaoProduto.Model.GestorProdutos;
 
 import java.util.UUID;
 
-public class GestorProdutos {
-    public Fornecedor[] fornecedores = new Fornecedor[100];
-    public int qntFornecedores = 0;
+import br.com.gestaoProduto.Model.Fornecedor.Fornecedor;
+import br.com.gestaoProduto.Model.Produtos.Produto;
+
+public abstract class GestorProdutos {
+    public Fornecedor[] fornecedores;
+    public int qntFornecedores;
+
+    public GestorProdutos(int qntFornecedores) {
+        this.fornecedores = new Fornecedor[qntFornecedores];
+    }
 
     public void cadastrarFornecedor(Fornecedor fornecedor){
         this.fornecedores[this.qntFornecedores] = fornecedor;
