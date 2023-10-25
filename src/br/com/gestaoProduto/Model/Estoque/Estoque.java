@@ -21,7 +21,7 @@ public abstract class Estoque {
         for (int i = 0 ; i < this.qntProdutoNoEstoque; i++){
             if(produtosNoEstoque[i] == produto && produto.quantidadeEmEstoque > 0){
                 System.out.printf("\nO produto %s esta disponivel\n", produto.nome);
-                break;
+                return;
                 }
         }
         throw new DisponibilidadeException("O produto no esta disponivel");
@@ -41,7 +41,7 @@ public abstract class Estoque {
                 produtosNoEstoque[i].quantidadeEmEstoque += qntEmEstoque;
                 produtosNoEstoque[i].valor = valorDoProduto;
                 System.out.println("\nProduto atualizado com sucesso!");
-                break;
+                return;
             }
         }
         throw new ProdutosException("Produto não encontrado");
@@ -53,7 +53,7 @@ public abstract class Estoque {
                 this.produtosNoEstoque[i] = null;
                 this.qntProdutoNoEstoque--;
                 System.out.println("\nProduto excluido com sucesso!");
-                break;
+                return;
             }
         }
         throw new ProdutosException("Produto não encontrado");

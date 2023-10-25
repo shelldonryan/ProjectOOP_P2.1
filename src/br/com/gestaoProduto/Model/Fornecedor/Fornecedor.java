@@ -24,7 +24,7 @@ public abstract class Fornecedor {
         for(int i = 0; i < produtosFornecedor.length; i++) {
             if (produtosFornecedor[i] == null) {
                 produtosFornecedor[i] = produto;
-                break;   
+                return;   
             }
         }
         throw new QuantidadeProdutosFornecedorException("Quantidade maxima de produtos atingida");

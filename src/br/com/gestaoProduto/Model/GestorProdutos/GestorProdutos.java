@@ -30,7 +30,7 @@ public abstract class GestorProdutos {
                 System.out.println("Busca Por Nome");
                 fornecedores[i].produtosFornecedor[j].exibirInfo();
                 System.out.println("-------------");
-                break;
+                return;
                 }
             }
         }
@@ -44,7 +44,7 @@ public abstract class GestorProdutos {
                 System.out.println("Busca Por ID");
                 fornecedores[i].produtosFornecedor[j].exibirInfo();
                 System.out.println("-------------");
-                break;
+                return;
                 }
             }
         }
