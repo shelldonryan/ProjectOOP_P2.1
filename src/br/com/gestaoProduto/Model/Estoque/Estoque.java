@@ -3,6 +3,9 @@ package br.com.gestaoProduto.Model.Estoque;
 import java.util.UUID;
 
 import br.com.gestaoProduto.Model.Produtos.Produto;
+import br.com.gestaoProduto.exception.DisponibilidadeException;
+import br.com.gestaoProduto.exception.ProdutosException;
+import br.com.gestaoProduto.exception.QuantidadeProdutoEstoqueException;
 
 public abstract class Estoque {
 
@@ -15,22 +18,21 @@ public abstract class Estoque {
     }
 
     public void verificarDisponibilidade(Produto produto){
-        if(this.qntProdutoNoEstoque > 0){
-            for (int i = 0 ; i < this.qntProdutoNoEstoque; i++){
-                if(produtosNoEstoque[i] == produto && produto.quantidadeEmEstoque > 0){
-                    System.out.printf("\nO produto %s esta disponivel\n", produto.nome);
-                    break;
-                    } else{
-                        System.out.printf("\nO produto %s nao esta disponivel\n", produto.nome);
-                    }
-            }
+        for (int i = 0 ; i < this.qntProdutoNoEstoque; i++){
+            if(produtosNoEstoque[i] == produto && produto.quantidadeEmEstoque > 0){
+                System.out.printf("\nO produto %s esta disponivel\n", produto.nome);
+                break;
+                }
         }
+        throw new DisponibilidadeException("O produto no esta disponivel");
     }
 
     public void adicionarProduto(Produto produto){
+        if (this.produtosNoEstoque[this.qntProdutoNoEstoque] != null) {
+            throw new QuantidadeProdutoEstoqueException("Estoque Lotado");
+        }
         this.produtosNoEstoque[this.qntProdutoNoEstoque] = produto;
         this.qntProdutoNoEstoque++;
-        System.out.println("\nProduto " + produto.nome + " Adicionado com Sucesso");
     }
 
     public void atualizarProduto(UUID idDoProduto, Double valorDoProduto, int qntEmEstoque){
@@ -40,10 +42,9 @@ public abstract class Estoque {
                 produtosNoEstoque[i].valor = valorDoProduto;
                 System.out.println("\nProduto atualizado com sucesso!");
                 break;
-            }else{
-                System.out.println("\nProduto nao encontrado");
             }
         }
+        throw new ProdutosException("Produto não encontrado");
     }
 
     public void excluirProduto(Produto produto){
@@ -51,9 +52,11 @@ public abstract class Estoque {
             if (produtosNoEstoque[i] == produto){
                 this.produtosNoEstoque[i] = null;
                 this.qntProdutoNoEstoque--;
-                System.out.println("\nProduto excluido com  sucesso!");
+                System.out.println("\nProduto excluido com sucesso!");
+                break;
             }
         }
+        throw new ProdutosException("Produto não encontrado");
     }
 
     public void gerarRelatorio(){

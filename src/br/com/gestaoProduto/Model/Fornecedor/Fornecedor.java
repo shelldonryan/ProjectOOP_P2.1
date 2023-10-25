@@ -3,6 +3,8 @@ package br.com.gestaoProduto.Model.Fornecedor;
 import java.util.UUID;
 
 import br.com.gestaoProduto.Model.Produtos.Produto;
+import br.com.gestaoProduto.exception.ProdutosException;
+import br.com.gestaoProduto.exception.QuantidadeProdutosFornecedorException;
 public abstract class Fornecedor {
     public String nomeFornecedor;
     public String cnpj;
@@ -20,11 +22,12 @@ public abstract class Fornecedor {
 
     public void addProdutoFornecedor(Produto produto) {
         for(int i = 0; i < produtosFornecedor.length; i++) {
-            if(produtosFornecedor[i] == null) {
+            if (produtosFornecedor[i] == null) {
                 produtosFornecedor[i] = produto;
-                break;
+                break;   
             }
         }
+        throw new QuantidadeProdutosFornecedorException("Quantidade maxima de produtos atingida");
     }
 
     public void exibirInfo(){
@@ -35,8 +38,11 @@ public abstract class Fornecedor {
     public void produtosDoFornecedor() {
         System.out.println("Coloque um titulo");
         for(int i=0; i < produtosFornecedor.length; i++) {
-            if(produtosFornecedor[i] != null)
-            System.out.println("Coloque o nome: coloque o valor");
+            if(produtosFornecedor[i] != null) {
+                System.out.println("Coloque o nome: coloque o valor");
+            } else {
+                throw new ProdutosException("Produto não encontrado");
+            }
         }
     }
 }

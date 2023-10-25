@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import br.com.gestaoProduto.Model.Fornecedor.Fornecedor;
 import br.com.gestaoProduto.Model.Produtos.Produto;
+import br.com.gestaoProduto.exception.ProdutosException;
+import br.com.gestaoProduto.exception.QuantidadeFornecedorException;
 
 public abstract class GestorProdutos {
     public Fornecedor[] fornecedores;
@@ -14,9 +16,11 @@ public abstract class GestorProdutos {
     }
 
     public void cadastrarFornecedor(Fornecedor fornecedor){
+        if (this.fornecedores[this.qntFornecedores] != null) {
+            throw new QuantidadeFornecedorException("Quantidade maxima de fornecedores atingida");
+        } 
         this.fornecedores[this.qntFornecedores] = fornecedor;
         this.qntFornecedores++;
-        System.out.println("\nFornecedor Cadastrado");
     }
     public void buscarProdPorNome(String nome) {
         for (int i = 0; i < this.qntFornecedores; i++) {
@@ -26,9 +30,11 @@ public abstract class GestorProdutos {
                 System.out.println("Busca Por Nome");
                 fornecedores[i].produtosFornecedor[j].exibirInfo();
                 System.out.println("-------------");
-            }
+                break;
+                }
             }
         }
+        throw new ProdutosException("Produto nao encontrado");
     }
     public void buscarProdPorID(UUID uuid){
         for (int i = 0; i < this.qntFornecedores; i++){
@@ -38,9 +44,11 @@ public abstract class GestorProdutos {
                 System.out.println("Busca Por ID");
                 fornecedores[i].produtosFornecedor[j].exibirInfo();
                 System.out.println("-------------");
+                break;
                 }
             }
         }
+        throw new ProdutosException("Produto não encontrado");
     }
     public void exibirInfoFornecedor(String nomeDoFornecedor){
         for (int i = 0; i < qntFornecedores; i++){
@@ -59,7 +67,7 @@ public abstract class GestorProdutos {
                 System.out.println("\n-------------");
                 fornecedores[i].produtosFornecedor[j].exibirInfo();
                 System.out.println("-------------");
-            }
+                }
             }
         }
     }
