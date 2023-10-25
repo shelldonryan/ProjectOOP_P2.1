@@ -1,4 +1,6 @@
 package br.com.gestaoProduto.Main;
+import java.util.Scanner;
+
 import br.com.gestaoProduto.Model.Estoque.Shopping;
 import br.com.gestaoProduto.Model.Estoque.Supermercado;
 import br.com.gestaoProduto.Model.Fornecedor.Alimento;
@@ -10,77 +12,75 @@ import br.com.gestaoProduto.Model.Produtos.Carne;
 
 public class Main {
 public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Digite o nome do produto:");
+    String nomeDoProduto = scanner.nextLine();
+    System.out.println("\nDescrição do produto: ");
+    String descDoProduto = scanner.nextLine();
+    System.out.println("\nDigite o valor do produto:");
+    double valorDoProduto = scanner.nextDouble();
+    System.out.println("\nDigite a quantidade em estoque: ");
+    int qntEstoque = Integer.parseInt(scanner.nextLine());
+
     Carne tipo1Carne = new Carne(
-        "Carne Premium de Angus",
-        "Uma carne de alta qualidade, proveniente de gado Angus cuidadosamente selecionado.",
-        59.90,
-        500);
+        nomeDoProduto,
+        descDoProduto,
+        valorDoProduto,
+        qntEstoque);
     
-    Carne tipo2Carne = new Carne(
-        "Carne de Cordeiro Australiano",
-        "Originária das vastas pastagens da Austrália, esta carne de cordeiro é conhecida por sua textura tenra e sabor distinto.",
-        299.99,
-        200);
-
-    Carne tipo3Carne = new Carne(
-        "Costela de Porco Defumada",
-        "Esta costela suculenta passa por um processo de defumação artesanal, resultando em um sabor defumado inigualável.",
-        34.90,
-        800);
+    System.out.println("\nDigite o nome do segundo fornecedor: ");
+    String nomeFornecedor = scanner.nextLine();
+    System.out.println("\ndigite o numero do cnpj: ");
+    String numeroCnpj = scanner.nextLine();
+    System.out.println("\nDigite a quantidade maxima de produtos deste fornecedor: ");
+    int qntProdutosMax = Integer.parseInt(scanner.nextLine());
     
-    Carne tipo4Carne = new Carne(
-        "Costela de Porco Defumada",
-        "Proveniente das águas frias e puras do Alasca, este filé de salmão selvagem é uma escolha saudável e deliciosa.",
-        89.90,
-        400);
-
     Alimento fornecedor1 = new Alimento(
-        "Suprimentos Tech Ltda.", 
-        "12.345.678/0001-90", 
-        4);
+        nomeFornecedor, 
+        numeroCnpj, 
+        qntProdutosMax);
     
     fornecedor1.addProdutoFornecedor(tipo1Carne);
-    fornecedor1.addProdutoFornecedor(tipo2Carne);
-    fornecedor1.addProdutoFornecedor(tipo3Carne);
-    fornecedor1.addProdutoFornecedor(tipo4Carne);
     fornecedor1.produtosDoFornecedor();
     
-    Camisa option1Roupa = new Camisa(
-        "Adidas Slim",
-        "Smart TV com resolução UltraHD e 55 polegadas.",
-        199.00,
-        300);
+    System.out.println("\nDigite o nome do produto:");
+    String nomeDoProduto2 = scanner.nextLine();
+    System.out.println("\nDescrição do produto: ");
+    String descDoProduto2 = scanner.nextLine();
+    System.out.println("\nDigite o valor do produto:");
+    double valorDoProduto2 = scanner.nextDouble();
+    System.out.println("\nDigite a quantidade em estoque: ");
+    int qntEstoque2 = Integer.parseInt(scanner.nextLine());
     
-    Camisa option2Roupa = new Camisa(
-        "Nike Dry-fit",
-        "Geladeira com tecnologia FrostFree e capacidade de 450 litros.",
-        259.00,
-        400);
-
-    Camisa option3Roupa = new Camisa(
-        "Lacoste Polo",
-        "Máquina de lavar roupa com diversos modos de lavagem.",
-        499.00,
-        200);
-    Camisa option4Roupa = new Camisa(
-        "Casaco Gucci",
-        "Câmera digital de alta performance para fotógrafos profissionais.",
-        1699.00,
-        140);
+    Camisa option1Roupa = new Camisa(
+        nomeDoProduto2,
+        descDoProduto2,
+        valorDoProduto2,
+        qntEstoque2);
+    
+    System.out.println("\nDigite o nome do fornecedor: ");
+    String nomeFornecedor2 = scanner.nextLine();
+    System.out.println("\ndigite o numero do cnpj: ");
+    String numeroCnpj2 = scanner.nextLine();
+    System.out.println("\nDigite a quantidade maxima de produtos deste fornecedor: ");
+    int qntProdutosMax2 = Integer.parseInt(scanner.nextLine());
 
     Roupa fornecedor2 = new Roupa(
-        "Clothes S.A.", 
-        "98.765.432/0001-21", 
-        4);
+        nomeFornecedor2, 
+        numeroCnpj2, 
+        qntProdutosMax2);
 
     fornecedor2.addProdutoFornecedor(option1Roupa);
-    fornecedor2.addProdutoFornecedor(option2Roupa);
-    fornecedor2.addProdutoFornecedor(option3Roupa);
-    fornecedor2.addProdutoFornecedor(option4Roupa);
     fornecedor2.produtosDoFornecedor();
+    
+    System.out.println("\nDigite a quantidade de fornecedores dessa gestao: ");
+    int qntFornecedores1 = Integer.parseInt(scanner.nextLine());
+    Supervisor gestorDeProdutos1 = new Supervisor(qntFornecedores1);
 
-    Supervisor gestorDeProdutos1 = new Supervisor(3);
-    Gerente gestorDeProdutos2 = new Gerente(3);
+    System.out.println("\nDigite a quantidade de fornecedores dessa gestao: ");
+    int qntFornecedores2 = Integer.parseInt(scanner.nextLine());
+    Gerente gestorDeProdutos2 = new Gerente(qntFornecedores2);
 
     gestorDeProdutos1.cadastrarFornecedor(fornecedor1);
     gestorDeProdutos1.exibirInfoFornecedor(fornecedor1.nomeFornecedor);
@@ -88,45 +88,44 @@ public static void main(String[] args) {
     gestorDeProdutos2.cadastrarFornecedor(fornecedor2);
     gestorDeProdutos2.exibirInfoFornecedor(fornecedor2.nomeFornecedor);
 
-    
-    
-    Supermercado estoque1 = new Supermercado(10000);
-    Shopping estoque2 = new Shopping(1000);
+    System.out.println("\nDigite a quantidade de Produtos disponiveis no estoque: ");    
+    int qntProdutoNoEstoque = Integer.parseInt(scanner.nextLine());
+    Supermercado estoque1 = new Supermercado(qntProdutoNoEstoque);
+
+    System.out.println("\nDigite a quantidade de Produtos disponiveis no estoque: ");
+    int qntProdutoNoEstoque2 = Integer.parseInt(scanner.nextLine());
+    Shopping estoque2 = new Shopping(qntProdutoNoEstoque2);
 
     estoque1.adicionarProduto(fornecedor1.produtosFornecedor[0]);
-    estoque1.adicionarProduto(fornecedor1.produtosFornecedor[1]);
-    estoque1.adicionarProduto(fornecedor1.produtosFornecedor[2]);
-    estoque1.adicionarProduto(fornecedor1.produtosFornecedor[3]);
     estoque2.adicionarProduto(fornecedor2.produtosFornecedor[0]);
-    estoque2.adicionarProduto(fornecedor2.produtosFornecedor[1]);
-    estoque2.adicionarProduto(fornecedor2.produtosFornecedor[2]);
-    estoque2.adicionarProduto(fornecedor2.produtosFornecedor[3]);
 
     estoque1.atualizarProduto(
-        fornecedor1.produtosFornecedor[2].idDoProduto, 
+        fornecedor1.produtosFornecedor[0].idDoProduto, 
         45.89, 
         400);
     
     estoque2.atualizarProduto(
-        fornecedor1.produtosFornecedor[3].idDoProduto, 
+        fornecedor1.produtosFornecedor[0].idDoProduto, 
         1500.46, 
         120);
 
     estoque1.gerarRelatorio();
     estoque2.gerarRelatorio();
 
-    estoque1.verificarDisponibilidade(tipo3Carne);
-    estoque1.excluirProduto(tipo4Carne);
+    estoque1.verificarDisponibilidade(tipo1Carne);
+    // estoque1.excluirProduto(tipo1Carne);
     
-    estoque2.verificarDisponibilidade(option4Roupa);
-    estoque2.excluirProduto(option4Roupa);
+    estoque2.verificarDisponibilidade(option1Roupa);
+    // estoque2.excluirProduto(option1Roupa);
 
     gestorDeProdutos1.exibirInfoProduto(tipo1Carne);
-    gestorDeProdutos1.buscarProdPorNome(tipo2Carne.nome);
-    gestorDeProdutos1.buscarProdPorID(tipo3Carne.idDoProduto);
+    gestorDeProdutos1.buscarProdPorNome(tipo1Carne.nome);
+    gestorDeProdutos1.buscarProdPorID(tipo1Carne.idDoProduto);
     
     gestorDeProdutos2.exibirInfoProduto(option1Roupa);
-    gestorDeProdutos2.buscarProdPorNome(option2Roupa.nome);
-    gestorDeProdutos2.buscarProdPorID(option3Roupa.idDoProduto);
+    gestorDeProdutos2.buscarProdPorNome(option1Roupa.nome);
+    gestorDeProdutos2.buscarProdPorID(option1Roupa.idDoProduto);
+
+    scanner.close();
     }    
 }
